@@ -1,0 +1,8 @@
+flask
+elevenlabs
+python-dotenv
+torch
+transformers
+requests
+pandas
+numpy
