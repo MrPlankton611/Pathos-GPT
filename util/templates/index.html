@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Emotional AI Chat</title>
+</head>
+<body>
+    <div class="signout">
+        <a href="/signout" class="signoutclick">Sign Out</a>
+        <h1>Hi {{session['username']}}</h1>
+    </div>
+    <div class="chat-container">
+        <div class="chat-box" id="chat-box"></div>
+    </div>
+    <input type="text" class="chat-input" id="chat-input" placeholder="Share your Feelings ...">
+    <button id="send-button" class="send-button">Send</button>
+        
+    <footer>PathosAI may make mistakes, please don't rely on its information</footer>
+
+    <style>
+        .signoutclick{
+            background-color: #007BFF;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: 0.3s;
+            margin-top: 20px;
+            margin-right: 10px;
+            text-decoration: none;
+            text-align: center;
+            margin-bottom: 20px;
+
+        }
+        h1{
+            text-align:center;
+            color:#83BBF7;
+        }
+        
+        .signout{
+            width:100%;
+            flex-direction: row;
+            justify-content: center;
+            height:50%;
+            margin-top: 5px;
+            color: #505A5B;
+        }
+        .send-button{
+            width:100px;
+            margin-left:45%;
+            margin-right:55%;
+            /* margin: auto; */
+            padding: 10px;
+            border-radius: 10px;
+            color: white;
+            border: none;
+            font-size: large;
+            background-color:#83BBF7;
+        }
+        
+        img{
+            width:50px;
+            height:20px;
+            border-radius: 50%;
+        }
+        body {
+            font-family: Georgia, 'Times New Roman', Times, serif;
+            background-color:  #e0f7fa;
+            display: flex;
+            justify-content: space-around;
+            height: 100vh;
+            flex-direction: column;
+            /* background-image: url('https://images.unsplash.com/photo-1493673272479-a20888bcee10?fm=jpg&q=60&w=3000&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8cGxhbnQlMjB3YWxscGFwZXJ8ZW58MHx8MHx8fDA%3D'); */
+        }
+        .chat-container {
+
+            background-color: #e0f7fa;
+            border-radius: 8px;
+            width: 80%;
+            padding: 0px;
+            box-sizing: border-box;
+            margin-top: 0px;
+            height:80%;
+            margin-left: 10%;
+            margin-right:10%;
+        }
+        .chat-box {
+            height: 500px;
+            overflow-y: auto;
+            padding:0px;
+            border-radius: 4px;
+            width:50%;
+            margin-left:25%;
+            margin-right:25%;
+            /* display: flex;
+            align-items: flex-end; */
+        }
+        .chat-input {
+            width: calc(100% - 50%);
+            padding: 10px;
+            border-radius: 50px;
+            margin-left:25%;
+            margin-right:50%;
+            font-family:'Comfortaa'; 
+            font-size: 22px;
+            font-size:25px;
+            margin-top:0px;
+            border-color:#e0f7fa;
+            box-shadow: 0px 5px 20px -10px;
+        }
+        
+
+        /* .audio-button {
+            padding: 10px 20px;
+            border: none;
+            background-color: #007bff;
+            color: #fff;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-top: 10px;
+        } */
+
+        footer {
+            text-align: center;
+            color: black;
+            background-color:  #e0f7fa;
+            padding: 10px;
+            width: 100%;
+            bottom: 0;
+            left: 0;
+        }
+        .userprint{
+            background-color:#83BBF7;
+            color:black;
+            display: inline-block;
+            padding:10px;
+            border-radius:5px;
+            /* margin-left: auto;
+            margin-right: 0; */
+            margin-top: 10px;
+            width:max-content;
+            font-size: 20px;
+            align-items: right;
+            display: flex;
+            justify-content: flex-end;
+            font-family:Arial, Helvetica, sans-serif
+        }
+        .userprint-box {
+            width: 100%;
+            display: grid;
+            grid-auto-flow: column; /* Arrange items in a row */
+            justify-content: end;
+        }
+        .aiprint{
+            background-color:#e0f7fa;
+            max-width:500px;
+            font-size: 20px;
+            padding: 5px;
+            border-radius: 5px;
+            margin: 10px 0px 10px 0px;
+            font-family:Arial, Helvetica, sans-serif;
+            text-align: justify;
+        }
+        
+    </style>
+
+    <script>
+    async function sendMessage() {
+        const chatBox = document.getElementById('chat-box');
+        const chatInput = document.getElementById('chat-input');
+        const sendButton = document.getElementById('send-button');
+        const message = chatInput.value.trim();
+
+        console.log("Button clicked, message:", message); // Debugging line
+
+        if (!message) return;
+
+        chatInput.disabled = true;
+        sendButton.disabled = true;
+        
+        const userMessageBox = document.createElement('div')
+        const userMessage = document.createElement('div');
+        userMessageBox.appendChild(userMessage)
+        userMessageBox.classList.add('userprint-box')
+        userMessage.textContent = message;
+        userMessage.classList.add('userprint');
+        chatBox.appendChild(userMessage);
+
+        try {
+            const response = await fetch('/send_message', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ message: message })
+            });
+
+            const data = await response.json();
+            if (response.ok) {
+                const aiMessage = document.createElement('div');
+                aiMessage.textContent = data.ai_message;
+                aiMessage.classList.add('aiprint')
+                chatBox.appendChild(aiMessage);
+            } else {
+                console.error("Error response:", data);
+            }
+        } catch (error) {
+            console.error("Error sending message:", error);
+        }
+
+        chatInput.disabled = false;
+        sendButton.disabled = false;
+        chatInput.value = '';
+        chatBox.scrollTop = chatBox.scrollHeight;
+    }
+
+    document.getElementById('chat-input').addEventListener('keypress', function(event) {
+        if (event.key === 'Enter') {
+            event.preventDefault();
+            sendMessage();
+        }
+    });
+
+    document.getElementById('send-button').addEventListener('click', function() {
+        sendMessage();
+    });
+    </script>
+</body>
+</html>

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Log In</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0px;
+            background-color: #e0f7fa;
+            color: #006064;
+            flex-direction: column;
+        }
+        .login-container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 300px;
+            margin:10px;
+        }
+        .login-container h2 {
+            margin-bottom: 20px;
+        }
+        .login-container input[type="text"],
+        .login-container input[type="password"] {
+            width: 80%;
+            padding: 5px;
+            margin-right:10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
+        .login-container button {
+            width: 95%;
+            padding: 10px;
+            background-color: #006064;
+            border: none;
+            border-radius: 5px;
+            color: #fff;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        .login-container button:hover {
+            background-color: #006064;
+        }
+        h1 {
+            color: #006064;
+            margin-bottom: 100px;
+            font-size: 75px;
+        }
+        .icon{
+            width:20px;
+            height:20px;
+            margin:0px;
+            display:inline; 
+            vertical-align: middle;
+        }
+        
+    </style>
+</head>
+<body>
+    <h1>Pathos-GPT</h1>
+    <div class="login-container">
+        <h2>Log In</h2>
+        <form action="/login-process" method="POST">
+            <div class="username_div">
+            <input type="text" name="username" placeholder="Username" required>
+            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAAAXNSR0IArs4c6QAAAZNJREFUaEPtmAtOBCEQRNmTqSdTT6aeTK04JMQs9KdqZDCQTJZkgOnXXQ303sri7ba4/WUDzI7gGRF4LKXgeTjg0H89+u/f7/DImhrgpZTybFgHGIyTNBUAvAzD8ettT4poqAA+vVY34yAlQFBNAeCRTc9IWk4sACTzRrnwJwrpxGYBGO9XbioKVwCgcoEFyCTvb8VNBYD+I1tnL13SjkxPPCxRACyfA1MBlt9GoSRmK6W8j4+zOVCTMpsL9PfpBZorc+RExtYJ76dP4Oo5FUBdzyMnWjbtXqwGwNq1oEEfV+zq5Y+jT3v9bADybhebfkYEYhaQozcA6UB6OhuBe/9AeIySJXYWIFPEW2Cp7TUKcIbhLVgYIgKguLhZUajv3XWyF+AvjQ9BeAEUpaPX++04MxIeAM/9JmOcZ45ZL1sAM413SckCmCWdNjrDKIwAZiRuT1bdXBgBXEE+Fah7PowAsmWiJzmjY7oy+tcAV0hgs/gaRWADRIVujL/rbOscENugX24D6H0aW3FHIOYv/ejlI/AFrrhFMdwslZ4AAAAASUVORK5CYII=" class="icon"/>
+        </div>
+            <div class="password_div">
+            <input type="password" name="password" placeholder="Password" required>
+            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAAAXNSR0IArs4c6QAAAVtJREFUaEPtmQEKwjAMRbub6cnUk6knU7+0MEq2pPnZdJCCUJmZ/yU/tZ1TOfiYDq6/JMCvK7hFBU6lFLwwLp/5o86fdd7eh7BHAkA0BDfxSwIBcJuBUSBRANcqfkQMIBBHjQgAj/gmmoZgAWCXu5BCCMMA3LwfJHudGTuxABDfi1rLqgSMngCEazAAkhhLNiXLWeJEQAagFzKSyT7W3QsMQG+fkSweHgB2eHWecCXTFVS/mBXAxn9lJMDMBqPJyAqkhchVZHcLMZu2kW1COy+YttyWxlvasI2I8n5W1ad+oO42tUOKV6AWp24x/h1AXWgsAH2zaVmLvr6qMQGi0y3cLyuQPUDaLC2UFkoLrWQgf8hIe1jCcxXKVcjiE2+fZhOT2dXC1QfGlgrsdZiXYEIApAexWuairqtPvC0VgJj2D2SbRwlcuo96mG+BVoCtBbvvnwDu1AUFHr4Cb6eOTTH1Gi2kAAAAAElFTkSuQmCC" class="icon"/>
+            </div>
+        <div>
+            <button type="submit">Log In</button>
+
+        </div>
+        </form>
+    </div>
+    <footer>
+        <p>Don't have an account? <a href="/signup">Sign up</a></p>
+    </footer>
+</body>
+</html>
