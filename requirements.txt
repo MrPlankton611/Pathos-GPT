@@ -6,3 +6,8 @@ transformers
 requests
 pandas
 numpy
+google
+google-genai
+#Install ffmpeg too https://ffmpeg.org/
+#Remember to change voice id in audio.py, as it is different for each voice api you use
+#special identifier

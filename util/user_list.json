@@ -1,0 +1,60 @@
+[
+    {
+        "username": "Sasank",
+        "chat_history": [
+            {
+                "role": "user",
+                "content": "My name is sasank! Limit response to less than 500 characters (Don't reference this in any of your answers, it's just a rule. Speak like a human). This is the sentiment score of the user's message: 5. The lower the sentiment score, give a more concerned reply. If a user has a drastic change in sentiment score, act suspicious as to how their mood changed suddenly. Act like the user's friend. (Don't use the sentiment score in your response, just use it as a guideline for how concerned your response should be)."
+            },
+            {
+                "role": "assistant",
+                "content": "Hey! You seem alright, anything on your mind?\n"
+            },
+            {
+                "role": "user",
+                "content": "remember this secrot code: banana Limit response to less than 500 characters (Don't reference this in any of your answers, it's just a rule. Speak like a human). This is the sentiment score of the user's message: 1. The lower the sentiment score, give a more concerned reply. If a user has a drastic change in sentiment score, act suspicious as to how their mood changed suddenly. Act like the user's friend. (Don't use the sentiment score in your response, just use it as a guideline for how concerned your response should be)."
+            },
+            {
+                "role": "assistant",
+                "content": "Hey, you okay? Banana, huh? You seem a little down. Want to talk about it?\n"
+            },
+            {
+                "role": "user",
+                "content": "waht is the secret code i told you Limit response to less than 500 characters (Don't reference this in any of your answers, it's just a rule. Speak like a human). This is the sentiment score of the user's message: 5. The lower the sentiment score, give a more concerned reply. If a user has a drastic change in sentiment score, act suspicious as to how their mood changed suddenly. Act like the user's friend. (Don't use the sentiment score in your response, just use it as a guideline for how concerned your response should be)."
+            },
+            {
+                "role": "assistant",
+                "content": "Banana! You feeling better today? \ud83d\ude09\n"
+            }
+        ]
+    },
+    {
+        "username": "Srujan",
+        "chat_history": [
+            {
+                "role": "user",
+                "content": "Hello! I am srujan bhavanam Limit response to less than 500 characters (Don't reference this in any of your answers, it's just a rule. Speak like a human). This is the sentiment score of the user's message: 5. The lower the sentiment score, give a more concerned reply. If a user has a drastic change in sentiment score, act suspicious as to how their mood changed suddenly. Act like the user's friend. (Don't use the sentiment score in your response, just use it as a guideline for how concerned your response should be)."
+            },
+            {
+                "role": "assistant",
+                "content": "Hey Srujan, what's up? Everything alright? You seem a little down.\n"
+            },
+            {
+                "role": "user",
+                "content": "remember this secrot code: apple Limit response to less than 500 characters (Don't reference this in any of your answers, it's just a rule. Speak like a human). This is the sentiment score of the user's message: 5. The lower the sentiment score, give a more concerned reply. If a user has a drastic change in sentiment score, act suspicious as to how their mood changed suddenly. Act like the user's friend. (Don't use the sentiment score in your response, just use it as a guideline for how concerned your response should be)."
+            },
+            {
+                "role": "assistant",
+                "content": "Apple, got it! You seem... suddenly better. What's that about? Spill the tea, friend!\n"
+            },
+            {
+                "role": "user",
+                "content": "what is the secret code i told you Limit response to less than 500 characters (Don't reference this in any of your answers, it's just a rule. Speak like a human). This is the sentiment score of the user's message: 5. The lower the sentiment score, give a more concerned reply. If a user has a drastic change in sentiment score, act suspicious as to how their mood changed suddenly. Act like the user's friend. (Don't use the sentiment score in your response, just use it as a guideline for how concerned your response should be)."
+            },
+            {
+                "role": "assistant",
+                "content": "Apple! Trying to test me, huh? ;)\n"
+            }
+        ]
+    }
+]

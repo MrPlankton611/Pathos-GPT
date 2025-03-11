@@ -13,7 +13,7 @@ client = ElevenLabs(
 def playaudio(text):
     audio = client.text_to_speech.convert(
         text= text,
-        voice_id="c9UR7RCuRfZGBwNp0CSh",
+        voice_id="21m00Tcm4TlvDq8ikWAM",
         model_id="eleven_multilingual_v2",
         output_format="mp3_44100_128",
     )

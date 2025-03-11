@@ -23,6 +23,8 @@ def signup():
 @app.route("/signout")
 def signout_process():
     session.pop("username", None)
+    with open ("util/currentuser.txt", "w") as f:
+        f.write("")
     return render_template("login.html")
 
 @app.route("/signup-process", methods=["POST", "GET"])
@@ -42,10 +44,11 @@ def signup_process():
             # file_data = jsonify(file_data)
         print(file_data)
         file_data["accounts"][username] = password
+        genapi.createUser(username)
         with open("util/login1.json", "w", encoding="utf-8") as f:
             json.dump(file_data, f, indent = 4)
         session['username'] = username
-        return render_template("index.html")
+        return render_template("login.html")
 
 @app.route("/login-process", methods=["POST", "GET"])
 def login_process():
@@ -59,6 +62,9 @@ def login_process():
             if id in usernames:
                 if password == file_data[id]:
                     session['username'] = id
+                    with open("util/currentuser.txt", "w") as f:
+                        f.write(id)
+                    genapi.selectUser()
                     return render_template("index.html")
                 else:
                     return render_template("login.html")
@@ -68,13 +74,13 @@ def login_process():
 @app.route("/send_message", methods=["POST"])
 def send_message():
     print("hi")
-    user_message = request.json.get("message")
-    sentiment_score = sentiment.compute_sentiment(user_message)
+    user_input = request.json.get("message")
+    sentiment_score = sentiment.compute_sentiment(user_input)
     
-    if not user_message:
+    if not user_input:
         return jsonify({"error": "No message provided"}), 400
 
-    ai_response = genapi.getresponse(user_message, sentiment_score)
+    ai_response = genapi.getresponse(user_input, sentiment_score)
     
     audio.playaudio(ai_response)
 
